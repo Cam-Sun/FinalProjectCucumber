@@ -4,7 +4,7 @@ import org.openqa.selenium.By
 
 object InventoryLocators {
 
-  val inventoryTitle: By = By.cssSelector("span[data-test='title']")
+  val InventoryTitle: By = By.cssSelector("span[data-test='title']")
   val expectedTitle: String = "Products"
   val DropDown:By = By.className("product_sort_container")
 
@@ -15,5 +15,8 @@ object InventoryLocators {
   val ProductPrice:By= By.className("pricebar")
   val Product:By = By.className("inventory_item")
 
-//  def selectedOption(sortingOption:String):By = By.cssSelector(s"option[text='${sortingOption}']")
+  val ShoppingCartBadge: By = By.className("shopping_cart_badge")
+
+  val RemoveButton: By = By.xpath("//button[contains(@name, 'remove')]")
+  val expectedRemoveButtonText: String = "Remove"
 }

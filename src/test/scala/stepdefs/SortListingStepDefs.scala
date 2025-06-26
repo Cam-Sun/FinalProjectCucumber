@@ -1,8 +1,10 @@
 package stepdefs
 
+
 import io.cucumber.scala.{EN, ScalaDsl}
 import locators.InventoryLocators.{DropDown, Product}
 import pages.InventoryPage.{clickOn, clickSortingOption, verifySortingOrder}
+
 
 class SortListingStepDefs extends ScalaDsl with EN {
 
@@ -23,7 +25,6 @@ class SortListingStepDefs extends ScalaDsl with EN {
     verifySortingOrder(sortingOption,Product)
     println("tested")
   }}
-
 
 
 

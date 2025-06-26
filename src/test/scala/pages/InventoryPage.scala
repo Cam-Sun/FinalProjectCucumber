@@ -3,21 +3,12 @@ package pages
 import locators.InventoryLocators.{DropDown, ProductDescription, ProductImg, ProductLabel, ProductPrice}
 import org.openqa.selenium.{By, WebElement}
 import org.openqa.selenium.support.ui.Select
-
+import pages.LoginPage.{clickOn, driver, getText}
 
 object InventoryPage extends BasePage {
 
-  def elementFound(selector:By): Unit = {
-    try{
-      driver.findElement(selector)
-      return true
-    } catch{
-      case e:NoSuchElementException => println
-
-    }
-  }
-
  def verifyProductList(selector: By): Unit = {
+   
    val products: List[WebElement] = getListOfWebElements(selector)
    println(products.size)
   val result: Boolean = products.forall(product=>{
@@ -29,7 +20,6 @@ object InventoryPage extends BasePage {
    })
    assert(result, "Product listing is empty")
  }
-
 
 
   def clickSortingOption(option: String): Unit = {
@@ -49,8 +39,24 @@ object InventoryPage extends BasePage {
 //    assert(nameList.sortBy((name))
 
 
-
     //nameListAZ, nameListZA, priceListAZ, priceListZA
 
+  }
+
+
+
+  def selectProductByName(productName: String): Unit = {
+    driver.findElement(By.xpath(s"//div[contains(text(),'$productName')]")).click()
+  }
+
+  def addToCartSpecificProduct(itemName: String): Unit = {
+    val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$itemName")
+    clickOn(AddToCartSpecificProductButton)
+  }
+
+  def verifyCartItemCount(cartBadgeLocator: By): Unit = {
+    val numberOfItems: Int = getText(cartBadgeLocator).toInt
+    assert(numberOfItems > 0 , s"Sorry try again, Cart is empty")
+    println(numberOfItems)
   }
 }
