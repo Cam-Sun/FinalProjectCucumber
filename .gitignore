@@ -44,6 +44,16 @@ target
 .target
 test-result
 tmp
+# Scala / sbt
+/target/
+project/target/
+project/project/
+*.lock
+*.jar
+*.cache
+
+# Cucumber
+cucumber-report.json
 .vscode/
 /target/
 project/target/
