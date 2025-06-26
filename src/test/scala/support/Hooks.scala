@@ -14,10 +14,8 @@ class Hooks extends ScalaDsl with EN {
     DriverManager.driver.manage().window().maximize()
   }
 
-
-
-//  After {
-//    DriverManager.quitDriver()
-//  }
+  After {
+    DriverManager.quitDriver()
+  }
 
 }
