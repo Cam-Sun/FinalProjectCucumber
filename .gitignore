@@ -7,9 +7,6 @@ hs_err_pid*
 
 Git Ignore
 .*
-qacohortproject.iml
-.idea/modules/TesterFinalProject/qacohortproject.qacohortproject-build.iml
-qacohortproject.qacohortproject-build.iml
 !.gitignore
 !.scalafmt.conf
 bin
@@ -48,5 +45,15 @@ target
 test-result
 tmp
 .vscode/
-.
+/target/
+project/target/
+project/project/
+*.lock
+*.jar
+*.cache
+
+# Cucumber
+cucumber-report.json
+*.tmp
+*.out
 
