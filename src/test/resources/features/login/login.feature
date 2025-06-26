@@ -23,3 +23,9 @@ Feature: Swag Labs Login Page
       | standard_user |               |
       |               |               |
 
+    Scenario: Unsuccessful login for user with locked status
+      When the user with locked status enters valid credentials
+      And the user clicks the login button
+      Then the login should fail and an error message informating that the user has been locked out should be displayed
+
+
