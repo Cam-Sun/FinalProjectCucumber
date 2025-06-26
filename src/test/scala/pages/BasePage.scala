@@ -5,6 +5,8 @@ import support.DriverManager
 import utils.ConfigReader
 import utils.WaitUtils.waitForElementVisible
 
+import scala.jdk.CollectionConverters.CollectionHasAsScala
+
 trait BasePage {
 
   def driver: WebDriver = DriverManager.driver
@@ -27,16 +29,20 @@ trait BasePage {
   def getWebElement(selector: By): WebElement =
     driver.findElement(selector)
 
+
+  def getListOfWebElements(selector: By): List[WebElement] =
+    driver.findElements(selector).asScala.toList
+
+
   def verifyText(textLocator: By, expectedHeader: String): Unit = {
     waitForElementVisible(driver, getWebElement(textLocator), 10)
-    assert(getText(textLocator).contains(expectedHeader) , "Verification failed: The actual text does not match the expected value")
+    assert(getText(textLocator).contains(expectedHeader), "Verification failed: The actual text does not match the expected value")
   }
 
   def verifyUrl(urlFragment: String): Unit = {
     val currentUrl = driver.getCurrentUrl
     assert(currentUrl.contains(urlFragment), s"URL check failed: expected to find '$urlFragment' in '$currentUrl'")
   }
-
 
 
 }
