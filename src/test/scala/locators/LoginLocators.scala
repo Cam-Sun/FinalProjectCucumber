@@ -8,5 +8,8 @@ object LoginLocators {
   val PasswordLocator: By = By.id("password")
   val LoginButton: By = By.id("login-button")
 
+  val errorMsgLocator: By = By.cssSelector("h3[data-test='error']")
+  val expectedErrorMsg = "Epic sadface:"
+
 
 }
