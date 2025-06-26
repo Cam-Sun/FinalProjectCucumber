@@ -7,10 +7,6 @@ hs_err_pid*
 
 Git Ignore
 .*
-.idea/modules/TesterFinalProject/qacohortproject.iml
-.idea/modules/TesterFinalProject/qacohortproject.qacohortproject-build.iml
-qacohortproject.iml
-qacohortproject.qacohortproject-build.iml
 !.gitignore
 !.scalafmt.conf
 bin
@@ -34,6 +30,7 @@ log
 logs
 .metals/
 modules
+TesterFinalProject
 /out
 precompiled
 /.project
@@ -48,4 +45,5 @@ target
 test-result
 tmp
 .vscode/
+.
 
