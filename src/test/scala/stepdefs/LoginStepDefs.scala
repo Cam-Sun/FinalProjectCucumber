@@ -1,7 +1,7 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import locators.InventoryLocators.{expectedTitle, inventoryTitle}
+import locators.InventoryLocators.{InventoryTitle, expectedTitle}
 import locators.LoginLocators.{LoginButton, errorMsgLocator, expectedBlockedUserErrorMsg, expectedErrorMsg}
 import pages.LoginPage.{browserLaunch, clickOn, inputPassword, inputUsername, verifyText, verifyUrl}
 import testdata.LoginData.{blockedUsernameData, passwordData, usernameData}
@@ -22,7 +22,7 @@ class LoginStepDefs extends ScalaDsl with EN {
   }
 
   Then("""^the user should be logged in successfully$""") { () =>
-    verifyText(inventoryTitle, expectedTitle)
+    verifyText(InventoryTitle, expectedTitle)
   }
 
   And("""redirected to the product listing page""") { () =>
