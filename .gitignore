@@ -7,6 +7,9 @@ hs_err_pid*
 
 Git Ignore
 .*
+qacohortproject.iml
+.idea/modules/TesterFinalProject/qacohortproject.qacohortproject-build.iml
+qacohortproject.qacohortproject-build.iml
 !.gitignore
 !.scalafmt.conf
 bin
