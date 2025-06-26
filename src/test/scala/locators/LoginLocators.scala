@@ -9,7 +9,8 @@ object LoginLocators {
   val LoginButton: By = By.id("login-button")
 
   val errorMsgLocator: By = By.cssSelector("h3[data-test='error']")
-  val expectedErrorMsg = "Epic sadface:"
+  val expectedErrorMsg: String = "Epic sadface:"
+  val expectedBlockedUserErrorMsg: String = "this user has been locked out"
 
 
 }
