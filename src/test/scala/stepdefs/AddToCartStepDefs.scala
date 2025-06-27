@@ -1,18 +1,17 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import locators.InventoryLocators.{RemoveButton, ShoppingCartBadge, expectedRemoveButtonText}
-import pages.InventoryPage.{addToCartSpecificProduct, selectProductByName, verifyCartItemCount}
+import locators.InventoryLocators.{InventoryTitle, RemoveButton, ShoppingCartBadge, expectedRemoveButtonText, expectedTitle}
+import locators.LoginLocators.{errorMsgLocator, expectedErrorMsg}
+import pages.InventoryPage.{addToCartSpecificProduct, goToProductDetailPage, verifyCartItemCount}
 import pages.LoginPage.{clickOn, verifyText, verifyUrl}
 import pages.ProductDetailPage.AddToCartButton
 
 class AddToCartStepDefs extends ScalaDsl with EN {
 
-  When("""the user clicks on the product {string} photo or name""") { (productName: String) =>
-    selectProductByName(productName)
-  }
-
-  Then("""^the user should be redirected to the selected product detail page$""") { () =>
+  Given("""the the user is on the selected product {string} detail page""") { (productName: String) =>
+    verifyText(InventoryTitle, expectedTitle)
+    goToProductDetailPage(productName)
     verifyUrl("inventory-item.html")
   }
 

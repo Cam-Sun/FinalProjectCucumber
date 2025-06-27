@@ -55,15 +55,11 @@ project/project/
 # Cucumber
 cucumber-report.json
 .vscode/
-/target/
-project/target/
-project/project/
-*.lock
-*.jar
-*.cache
+
 
 # Cucumber
-cucumber-report.json
 *.tmp
 *.out
+export
+
 
