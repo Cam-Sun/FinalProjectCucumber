@@ -35,9 +35,7 @@ object InventoryPage extends BasePage {
   def verifySortingOrder(sortingOption: String, selector: By): Unit = {
     val products: List[WebElement] = getListOfWebElements(selector)
     val nameList = products.map(product=>product.findElement(ProductLabel).getText)
-    //println("nameList: " + nameList)
     val priceList = products.map(product=>product.findElement(ProductPrice).getText.drop(1).toDouble)
-    println("priceList: " + priceList)
     sortingOption match {
       case "Name (A to Z)" => assert(nameList.sorted == nameList, s"products are not sorted in $sortingOption order")
       case "Name (Z to A)" => assert(nameList.sorted.reverse == nameList, s"products are not sorted in $sortingOption order")
