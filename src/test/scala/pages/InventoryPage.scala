@@ -1,13 +1,13 @@
 package pages
 
-import locators.InventoryLocators.{DropDown, ProductDescription, ProductImg, ProductLabel, ProductPrice}
-import org.openqa.selenium.{By, WebElement}
+import locators.InventoryLocators._
 import org.openqa.selenium.support.ui.Select
-import pages.LoginPage.{clickOn, driver, getText}
+import org.openqa.selenium.{By, WebElement}
 
 object InventoryPage extends BasePage {
 
- def verifyProductList(selector: By): Unit = {
+
+  def verifyProductList(selector: By): Unit = {
    
    val products: List[WebElement] = getListOfWebElements(selector)
    println(products.size)
@@ -31,18 +31,20 @@ object InventoryPage extends BasePage {
   }
 
 
+
   def verifySortingOrder(sortingOption: String, selector: By): Unit = {
     val products: List[WebElement] = getListOfWebElements(selector)
     val nameList = products.map(product=>product.findElement(ProductLabel).getText)
-      println(nameList)
-//ascending
-//    assert(nameList.sortBy((name))
-
-
-    //nameListAZ, nameListZA, priceListAZ, priceListZA
-
+    //println("nameList: " + nameList)
+    val priceList = products.map(product=>product.findElement(ProductPrice).getText.drop(1).toDouble)
+    println("priceList: " + priceList)
+    sortingOption match {
+      case "Name (A to Z)" => assert(nameList.sorted == nameList, s"products are not sorted in $sortingOption order")
+      case "Name (Z to A)" => assert(nameList.sorted.reverse == nameList, s"products are not sorted in $sortingOption order")
+      case "Price (low to high)" => assert(priceList.sorted == priceList, s"products are not sorted in $sortingOption order")
+      case "Price (high to low)" => println(priceList.sorted.reverse == priceList,s"products are not sorted in $sortingOption order" )
+    }
   }
-
 
 
   def selectProductByName(productName: String): Unit = {

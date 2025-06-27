@@ -15,9 +15,9 @@ Feature: Sort listing page
     Examples:
       | sortingOption       |
       | Name (A to Z)       |
-#      | Name (Z to A)       |
-#      | Price (low to high) |
-#      | Price (high to low) |
+      | Name (Z to A)       |
+      | Price (low to high) |
+      | Price (high to low) |
 
 
 
