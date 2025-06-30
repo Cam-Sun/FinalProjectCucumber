@@ -1,7 +1,7 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import locators.InventoryLocators.{InventoryTitle, ShoppingCartIcon, expectedTitle}
+import locators.InventoryLocators.{InventoryTitle, ShoppingCart, expectedTitle}
 import pages.InventoryPage.clickOn
 import pages.LoginPage.{verifyText, verifyUrl}
 class NavigateToCartStepdefs extends ScalaDsl with EN {
@@ -11,7 +11,7 @@ class NavigateToCartStepdefs extends ScalaDsl with EN {
   }
 
   When ("""the user clicks the shopping cart icon"""){
-clickOn(ShoppingCartIcon)
+clickOn(ShoppingCart)
   }
 
   Then("""the user is redirected to the shopping cart page"""){

@@ -23,7 +23,10 @@ object InventoryLocators {
   val AddToCartButton: By = By.xpath("//button[contains(@name, 'add-to-cart')]")
   val expectedAddToCartButtonText: String = "Add to cart"
 
-val ShoppingCartIcon:By = By.id("shopping_cart_container")
+  val ShoppingCart: By = By.cssSelector(".shopping_cart_link")
+
+
+
 
 
 }
