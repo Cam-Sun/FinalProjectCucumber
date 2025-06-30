@@ -3,6 +3,7 @@ package pages
 import locators.InventoryLocators._
 import org.openqa.selenium.support.ui.Select
 import org.openqa.selenium.{By, WebElement}
+import utils.FormatConversion.normalizeProductName
 
 object InventoryPage extends BasePage {
 
@@ -49,12 +50,14 @@ object InventoryPage extends BasePage {
   }
 
   def addToCartSpecificProduct(itemName: String): Unit = {
-    val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$itemName")
+    val idItemName: String = normalizeProductName(itemName)
+    val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$idItemName")
     clickOn(AddToCartSpecificProductButton)
   }
 
   def removeFromCartSpecificProduct(itemName: String): Unit = {
-    val RemoveFromCartSpecificProductButton: By = By.id(s"remove-$itemName")
+    val idItemName: String = normalizeProductName(itemName)
+    val RemoveFromCartSpecificProductButton: By = By.id(s"remove-$idItemName")
     clickOn(RemoveFromCartSpecificProductButton)
   }
 

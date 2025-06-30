@@ -24,8 +24,8 @@ Feature: Add to Cart
 
     Examples:
       | product                  |
-      | sauce-labs-onesie        |
-      | sauce-labs-fleece-jacket |
+      | Sauce Labs Onesie        |
+      | Sauce Labs Fleece Jacket |
 
 
 
