@@ -23,9 +23,9 @@ Feature: Add to Cart
     And the "Add to cart" button should change to "Remove"
 
     Examples:
-      | product                  |
-      | sauce-labs-onesie        |
-      | sauce-labs-fleece-jacket |
+      | product                   |
+      | Sauce Labs Onesie         |
+      | Sauce Labs Fleece  Jacket |
 
 
 
