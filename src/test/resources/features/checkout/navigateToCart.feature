@@ -7,14 +7,14 @@ Feature: Navigate to shopping cart page
 
   Scenario: User navigates to shopping cart page with 0 item added to cart
     Given the user is logged in successfully and is in the product listings page
-    When the user clicks the cart icon
+    When the user clicks the shopping cart icon
     Then the user is redirected to the shopping cart page
     And no cart item is displayed
 
 
   Scenario Outline: User navigates to shopping cart page with 1 item added to cart
     Given the user is logged in successfully and is in the product listings page
-    And the user adds "<product>" and  to the shopping cart
+    And the user adds "<product>" to the shopping cart
     When the user clicks the cart icon
     Then the user is redirected to the shopping cart page
     And "<product>"  is displayed on the cart page
