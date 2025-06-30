@@ -20,6 +20,10 @@ object InventoryLocators {
   val RemoveButton: By = By.xpath("//button[contains(@name, 'remove')]")
   val expectedRemoveButtonText: String = "Remove"
 
-  val BackToProductsButton: By = By.id("back-to-products")
-  val expectedBackToProductsButtonText: String = "Back to products"
+  val AddToCartButton: By = By.xpath("//button[contains(@name, 'add-to-cart')]")
+  val expectedAddToCartButtonText: String = "Add to cart"
+
+
+
+
 }

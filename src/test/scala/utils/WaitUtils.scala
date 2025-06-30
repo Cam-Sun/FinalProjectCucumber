@@ -12,4 +12,9 @@ object WaitUtils {
     wait.until(ExpectedConditions.visibilityOf(element))
   }
 
+  def waitForElementClickable(driver: WebDriver, element: WebElement, timeoutSeconds: Long): WebElement = {
+    val wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds))
+    wait.until(ExpectedConditions.elementToBeClickable(element))
+  }
+
 }

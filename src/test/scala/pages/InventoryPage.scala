@@ -53,8 +53,20 @@ object InventoryPage extends BasePage {
     clickOn(AddToCartSpecificProductButton)
   }
 
-  def verifyCartItemCount(cartBadgeLocator: By): Unit = {
-    val numberOfItems: Int = getText(cartBadgeLocator).toInt
-    assert(numberOfItems > 0, s"Sorry try again, Cart is empty")
+  def removeFromCartSpecificProduct(itemName: String): Unit = {
+    val RemoveFromCartSpecificProductButton: By = By.id(s"remove-$itemName")
+    clickOn(RemoveFromCartSpecificProductButton)
+  }
+
+
+
+  def verifyCartItemCount(expectedCount: Int, cartBadgeLocator: By): Unit = {
+    if (expectedCount == 0) {
+      assert(getListOfWebElements(cartBadgeLocator).isEmpty, "Expected empty cart, but cart is not empty.")
+    }
+    else {
+      val numberOfItems: Int = getText(cartBadgeLocator).toInt
+      assert(numberOfItems == expectedCount, s"Expected $expectedCount items, but found $numberOfItems")
+    }
   }
 }

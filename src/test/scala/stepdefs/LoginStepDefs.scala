@@ -2,7 +2,7 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import locators.InventoryLocators.{InventoryTitle, expectedTitle}
-import locators.LoginLocators.{LoginButton, errorMsgLocator, expectedBlockedUserErrorMsg, expectedErrorMsg}
+import locators.LoginLocators.{LoginButton, ErrorMsgLocator, expectedBlockedUserErrorMsg, expectedErrorMsg}
 import pages.LoginPage.{browserLaunch, clickOn, inputPassword, inputUsername, verifyText, verifyUrl}
 import testdata.LoginData.{blockedUsernameData, passwordData, usernameData}
 
@@ -35,7 +35,7 @@ class LoginStepDefs extends ScalaDsl with EN {
   }
 
   Then("""^the login should fail and an error message should be displayed$""") { () =>
-    verifyText(errorMsgLocator, expectedErrorMsg)
+    verifyText(ErrorMsgLocator, expectedErrorMsg)
   }
 
   When("""^the user with locked status enters valid credentials$""") { () =>
@@ -44,6 +44,6 @@ class LoginStepDefs extends ScalaDsl with EN {
   }
 
   Then("""^the login should fail and an error message informating that the user has been locked out should be displayed$""") { () =>
-    verifyText(errorMsgLocator, expectedBlockedUserErrorMsg)
+    verifyText(ErrorMsgLocator, expectedBlockedUserErrorMsg)
   }
 }

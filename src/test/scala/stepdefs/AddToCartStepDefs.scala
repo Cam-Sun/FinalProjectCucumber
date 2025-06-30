@@ -1,11 +1,9 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import locators.InventoryLocators.{InventoryTitle, RemoveButton, ShoppingCartBadge, expectedRemoveButtonText, expectedTitle}
-import locators.LoginLocators.{errorMsgLocator, expectedErrorMsg}
+import locators.InventoryLocators.{AddToCartButton, InventoryTitle, RemoveButton, ShoppingCartBadge, expectedRemoveButtonText, expectedTitle}
 import pages.InventoryPage.{addToCartSpecificProduct, goToProductDetailPage, verifyCartItemCount}
 import pages.LoginPage.{clickOn, verifyText, verifyUrl}
-import pages.ProductDetailPage.AddToCartButton
 
 class AddToCartStepDefs extends ScalaDsl with EN {
 
@@ -20,7 +18,7 @@ class AddToCartStepDefs extends ScalaDsl with EN {
   }
 
   Then("""^the item should be added to the shopping cart$""") { () =>
-    verifyCartItemCount(ShoppingCartBadge)
+    verifyCartItemCount(1, ShoppingCartBadge)
   }
 
   And("""the "Add to cart" button should change to "Remove"""") { () =>
