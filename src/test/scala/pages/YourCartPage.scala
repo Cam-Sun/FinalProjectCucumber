@@ -12,14 +12,6 @@ object YourCartPage extends BasePage {
       .map(_.getText)
       .toList
 
-    if (expectedProductNames.isEmpty) {
-      assert(actualCartItems.isEmpty, s"Expected no items in the cart, but found: ${actualCartItems.mkString(", ")}")
-    return
-    }
-
-    actualCartItems.foreach { actualName =>
-      assert(expectedProductNames.contains(actualName), s"Expected product $actualName not found")
-    }
-    assert(actualCartItems.size == expectedProductNames.size, s"Expected ${expectedProductNames.size} products in the cart, but found ${actualCartItems.size}.")
+    assert(actualCartItems == expectedProductNames, s"Expected ${expectedProductNames.size} products in the cart, but found ${actualCartItems.size}.")
   }
 }
