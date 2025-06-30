@@ -1,7 +1,8 @@
 package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
-import locators.InventoryLocators.{BackToProductsButton, InventoryTitle, expectedBackToProductsButtonText, expectedTitle}
+import locators.InventoryLocators.{InventoryTitle, expectedTitle}
+import locators.ProductDetailLocators.{BackToProductsButton, expectedBackToProductsButtonText}
 import pages.InventoryPage.goToProductDetailPage
 import pages.LoginPage.{verifyText, verifyUrl}
 

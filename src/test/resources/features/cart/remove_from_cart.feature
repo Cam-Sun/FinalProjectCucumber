@@ -1,4 +1,4 @@
-Feature: Add to Cart Page
+Feature: Remove from Cart
 
   Background:
     Given the user is on the Swag Labs login page
@@ -6,10 +6,10 @@ Feature: Add to Cart Page
     And the user clicks the login button
 
   Scenario Outline: User adds a product to the cart from the product detail page
-    Given the the user is on the selected product "<product>" detail page
-    When the user clicks the "Add to cart" button
-    Then the item should be added to the shopping cart
-    And the "Add to cart" button should change to "Remove"
+    Given the the user is on the selected product "<product>" detail page and has previously added that product to the cart
+    When the user clicks the "Remove" button
+    Then the item should be removed from the shopping cart
+    And the "Remove" button should change to "Add to Cart"
 
     Examples:
       | product               |
@@ -18,9 +18,10 @@ Feature: Add to Cart Page
 
   Scenario Outline: User adds a product to the cart from the listings page
     Given the user is logged in successfully and is in the product listings page
-    When the user clicks the "Add to cart" button for product "<product>"
-    Then the item should be added to the shopping cart
-    And the "Add to cart" button should change to "Remove"
+    And the user has added the product "<product>" to the shopping cart
+    When the user clicks the "Remove" button for product "<product>"
+    Then the item should be removed from the shopping cart
+    And the "Remove" button should change to "Add to Cart"
 
     Examples:
       | product                  |

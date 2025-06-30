@@ -3,7 +3,7 @@ package pages
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import support.DriverManager
 import utils.ConfigReader
-import utils.WaitUtils.waitForElementVisible
+import utils.WaitUtils.{waitForElementClickable, waitForElementVisible}
 
 import scala.jdk.CollectionConverters.CollectionHasAsScala
 
@@ -20,7 +20,7 @@ trait BasePage {
     driver.findElement(selector).sendKeys(text)
 
   def clickOn(selector: By): Unit = {
-    driver.findElement(selector).click()
+    waitForElementClickable(driver, getWebElement(selector), 10).click()
   }
 
   def getText(selector: By): String =
