@@ -25,6 +25,9 @@ object InventoryLocators {
 
   val ShoppingCart: By = By.cssSelector(".shopping_cart_link")
 
+  val MenuDropdown: By = By.id("react-burger-menu-btn")
+  val LogoutLink: By = By.id("logout_sidebar_link")
+
 
 
 
