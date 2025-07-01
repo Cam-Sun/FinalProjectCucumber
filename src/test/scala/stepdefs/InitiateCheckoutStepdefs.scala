@@ -2,9 +2,9 @@ package stepdefs
 
 import io.cucumber.scala.{EN, ScalaDsl}
 import locators.InventoryLocators.{ShoppingCart, ShoppingCartBadge}
-import locators.YourCartLocators.{CartTitle, Checkout, expectedCartTitle}
-import pages.InventoryPage.{addToCartSpecificProduct, verifyCartItemCount}
-import pages.LoginPage.{clickOn, verifyText, verifyUrl}
+import locators.YourCartLocators.Checkout
+import pages.InventoryPage.verifyCartItemCount
+import pages.LoginPage.{clickOn, verifyUrl}
 
 class InitiateCheckoutStepdefs extends ScalaDsl with EN {
 
@@ -12,29 +12,23 @@ class InitiateCheckoutStepdefs extends ScalaDsl with EN {
     verifyCartItemCount(0, ShoppingCartBadge)
   }
 
-  When("""^the user clicks on the shopping cart icon$""") { () =>
+  And("""the user is on the cart page"""){()=>{
     clickOn(ShoppingCart)
-  }
-
-  Then("""^the user should be redirected to the "Your Cart" page$""") { () =>
-    verifyText(CartTitle, expectedCartTitle)
     verifyUrl("cart.html")
   }
 
+  }
  When("""^the user clicks the checkout button$""") { () =>
     clickOn(Checkout)
   }
 
-  Then("""the user should remain on the "Your Cart" page """){
-
-  }
-  Given("""the user has added the product {string} to the shopping cart"""){(product:String)=>
-    addToCartSpecificProduct(product)
+  Then("""the user should remain on the "Your Cart" page"""){
+    verifyUrl("cart.html")
   }
 
 
   Then ("""the user should be directed to "Checkout: Your Information" page"""){
-    verifyUrl("cart.html")
+    verifyUrl("checkout-step-one.html")
   }
 
 

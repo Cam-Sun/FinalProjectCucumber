@@ -6,17 +6,15 @@ Feature: User initiates checkout
     And the user clicks the login button
 
   Scenario: User should not be able to checkout when no item is in the cart
-    Given the user has not added any products to the shopping cart
-    When the user clicks the shopping cart icon
-    Then the user should be redirected to the cart page
+    Given the user has not added any products to the cart
+    And the user is on the cart page
     When the user clicks the checkout button
     Then the user should remain on the "Your Cart" page
 
 
   Scenario Outline: User can initiate checkout when one item is in the cart
     Given the user has added the product "<product>" to the shopping cart
-    When the user clicks the shopping cart icon
-    Then the user should be redirected to the cart page
+    And the user is on the cart page
     When the user clicks the checkout button
     Then the user should be directed to "Checkout: Your Information" page
 
