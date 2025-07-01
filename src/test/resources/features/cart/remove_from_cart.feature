@@ -1,3 +1,4 @@
+@cart
 Feature: Remove from Cart
 
   Background:

@@ -1,3 +1,4 @@
+@link
 Feature: Accessibility Hover links
 
   Background:

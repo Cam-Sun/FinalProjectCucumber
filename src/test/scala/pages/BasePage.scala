@@ -3,7 +3,6 @@ package pages
 import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.WebDriverWait
 import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
-import pages.InventoryPage.driver
 import support.DriverManager
 import utils.ConfigReader
 import utils.WaitUtils.{waitForElementClickable, waitForElementVisible}
@@ -15,7 +14,7 @@ trait BasePage {
 
   def driver: WebDriver = DriverManager.driver
 
-  val js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
+  def js: JavascriptExecutor = driver.asInstanceOf[JavascriptExecutor]
 
   def browserLaunch(): Unit = {
     val testUrl = ConfigReader.get("base.url")

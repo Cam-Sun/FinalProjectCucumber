@@ -7,6 +7,7 @@ class Hooks extends ScalaDsl with EN {
 
   val options = new ChromeOptions()
   options.addArguments("--guest")
+  options.addArguments("--headless=new")
 
   Before {
     println("Launching browser before scenario...")

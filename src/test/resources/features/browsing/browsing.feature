@@ -1,3 +1,4 @@
+@cart
 Feature: Sort listing page
 
   Scenario: User can browser product listing

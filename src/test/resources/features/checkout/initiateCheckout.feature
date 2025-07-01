@@ -1,3 +1,4 @@
+@checkout
 Feature: User initiates checkout
 
   Background:

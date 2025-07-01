@@ -1,3 +1,4 @@
+@sort
 Feature: Sort listing page
 
   Background:
