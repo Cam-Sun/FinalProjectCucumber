@@ -12,22 +12,21 @@ class InitiateCheckoutStepdefs extends ScalaDsl with EN {
     verifyCartItemCount(0, ShoppingCartBadge)
   }
 
-  And("""the user is on the cart page"""){()=>{
+  And("""the user is on the cart page""") { () => {
     clickOn(ShoppingCart)
     verifyUrl("cart.html")
   }
 
   }
- When("""^the user clicks the checkout button$""") { () =>
+  When("""^the user clicks the checkout button$""") { () =>
     clickOn(Checkout)
   }
 
-  Then("""the user should remain on the "Your Cart" page"""){
+  Then("""the user should remain on the "Your Cart" page""") {
     verifyUrl("cart.html")
   }
 
-
-  Then ("""the user should be directed to "Checkout: Your Information" page"""){
+  Then("""the user should be directed to "Checkout: Your Information" page""") {
     verifyUrl("checkout-step-one.html")
   }
 
