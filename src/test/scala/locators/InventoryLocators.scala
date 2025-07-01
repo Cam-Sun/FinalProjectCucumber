@@ -27,6 +27,8 @@ object InventoryLocators {
 
   val MenuDropdown: By = By.id("react-burger-menu-btn")
   val LogoutLink: By = By.id("logout_sidebar_link")
+  val AboutLink: By = By.id("about_sidebar_link")
+  val InventoryLink: By = By.id("inventory_sidebar_link")
 
 
 

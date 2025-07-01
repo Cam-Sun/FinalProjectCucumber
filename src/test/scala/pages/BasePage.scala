@@ -1,6 +1,8 @@
 package pages
 
-import org.openqa.selenium.{By, WebDriver, WebElement}
+import org.openqa.selenium.interactions.Actions
+import org.openqa.selenium.{By, JavascriptExecutor, WebDriver, WebElement}
+import pages.InventoryPage.driver
 import support.DriverManager
 import utils.ConfigReader
 import utils.WaitUtils.{waitForElementClickable, waitForElementVisible}
@@ -21,6 +23,12 @@ trait BasePage {
 
   def clickOn(selector: By): Unit = {
     waitForElementClickable(driver, getWebElement(selector), 10).click()
+  }
+
+  def hoversOver(locator: By): Unit = {
+    val element: WebElement = waitForElementVisible(driver, getWebElement(locator), 10)
+    val actions = new Actions(driver)
+    actions.moveToElement(element).perform()
   }
 
   def getText(selector: By): String =
@@ -44,10 +52,18 @@ trait BasePage {
     assert(currentUrl.contains(urlFragment), s"URL check failed: expected to find '$urlFragment' in '$currentUrl'")
   }
 
-  def verifyURLWithCustomerizedMsg(urlFragment: String, msg:String): Unit = {
-    val currentUrl = driver.getCurrentUrl
-    assert(!currentUrl.contains(urlFragment), msg)
+
+
+  def verifyHoverChanges(locator: By): Unit = {
+    val js = driver.asInstanceOf[JavascriptExecutor]
+    val element: WebElement = waitForElementVisible(driver, getWebElement(locator), 10)
+    js.executeScript("arguments[0].style.color = '#18583a';", element)
+
+    val initialColour: String = element.getCssValue("color")
+    hoversOver(locator)
+
+    js.executeScript("arguments[0].style.color = '';", element)
+    val hoverColour: String = element.getCssValue("color")
+    assert(initialColour != hoverColour, s"Expected color to change on hover, but it did not. Value remained '$initialColour'")
   }
-
-
 }

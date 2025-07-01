@@ -5,7 +5,7 @@ Feature: User initiates checkout
     When the user enters valid username and password
     And the user clicks the login button
 
-#    this scenario can not be automated as user can start checkout when the cart is empty
+#    BUG - This scenario can not be automated as user can start checkout when the cart is empty
 #  Scenario: User should not be able to checkout when no item is in the cart
 #    Given the user has not added any products to the cart
 #    And the user is on the cart page

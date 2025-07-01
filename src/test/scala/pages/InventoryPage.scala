@@ -1,9 +1,11 @@
 package pages
 
 import locators.InventoryLocators._
+import org.openqa.selenium.interactions.Actions
 import org.openqa.selenium.support.ui.Select
-import org.openqa.selenium.{By, WebElement}
+import org.openqa.selenium.{By, JavascriptExecutor, WebElement}
 import utils.FormatConversion.normalizeProductName
+import utils.WaitUtils.waitForElementVisible
 
 object InventoryPage extends BasePage {
 
@@ -24,8 +26,6 @@ object InventoryPage extends BasePage {
 
 
   def clickSortingOption(option: String): Unit = {
-    //use the option string to find the option web element
-    // and click on the web element
     val dropDownMenu: WebElement = getWebElement(DropDown)
     val select = new Select(dropDownMenu)
     select.selectByVisibleText(option)
@@ -50,7 +50,7 @@ object InventoryPage extends BasePage {
   }
 
   def addToCartSpecificProduct(itemName: String): Unit = {
-    if(itemName.isEmpty) {return}
+    if(itemName.isEmpty) {}
     else {
       val idItemName: String = normalizeProductName(itemName)
       val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$idItemName")
@@ -75,4 +75,27 @@ object InventoryPage extends BasePage {
       assert(numberOfItems == expectedCount, s"Expected $expectedCount items, but found $numberOfItems")
     }
   }
+
+    def hoversOverProductName(productName: String): Unit = {
+      val element: WebElement = waitForElementVisible(driver, getWebElement(By.xpath(s"//div[contains(text(),'$productName')]")), 10)
+      val actions = new Actions(driver)
+      actions.moveToElement(element).perform()
+    }
+
+  def verifyHoverChangesOnProductName(productName: String): Unit = {
+    val js = driver.asInstanceOf[JavascriptExecutor]
+
+    val nameLink: WebElement = waitForElementVisible(driver, getWebElement(By.xpath(s"//div[contains(text(),'$productName')]")), 10)
+    js.executeScript("arguments[0].style.color = '#18583a';", nameLink)
+
+    val initialColour: String = nameLink.getCssValue("color")
+    hoversOverProductName(productName)
+
+    js.executeScript("arguments[0].style.color = '';", nameLink)
+    val hoverColour: String = nameLink.getCssValue("color")
+
+    assert(initialColour != hoverColour, s"Expected colour to change on hover, but it did not. Value remained '$initialColour'")
+  }
+
+
 }
