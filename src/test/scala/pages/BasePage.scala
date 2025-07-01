@@ -44,5 +44,10 @@ trait BasePage {
     assert(currentUrl.contains(urlFragment), s"URL check failed: expected to find '$urlFragment' in '$currentUrl'")
   }
 
+  def verifyURLWithCustomerizedMsg(urlFragment: String, msg:String): Unit = {
+    val currentUrl = driver.getCurrentUrl
+    assert(!currentUrl.contains(urlFragment), msg)
+  }
+
 
 }
