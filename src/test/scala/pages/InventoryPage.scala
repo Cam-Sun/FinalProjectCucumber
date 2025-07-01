@@ -50,9 +50,12 @@ object InventoryPage extends BasePage {
   }
 
   def addToCartSpecificProduct(itemName: String): Unit = {
-    val idItemName: String = normalizeProductName(itemName)
-    val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$idItemName")
-    clickOn(AddToCartSpecificProductButton)
+    if(itemName.isEmpty) {return}
+    else {
+      val idItemName: String = normalizeProductName(itemName)
+      val AddToCartSpecificProductButton: By = By.id(s"add-to-cart-$idItemName")
+      clickOn(AddToCartSpecificProductButton)
+    }
   }
 
   def removeFromCartSpecificProduct(itemName: String): Unit = {
