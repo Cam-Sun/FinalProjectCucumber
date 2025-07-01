@@ -3,11 +3,17 @@ package stepdefs
 import io.cucumber.scala.{EN, ScalaDsl}
 import locators.AboutLocators.{AboutHeader, expectedAboutHeaderText}
 import locators.InventoryLocators.{AboutLink, InventoryLink, InventoryTitle, ShoppingCart, expectedTitle}
-import locators.ProductDetailLocators.BackToProductsButton
+import locators.ProductDetailLocators.{BackToProductsButton, expectedBackToProductsButtonText}
 import pages.InventoryPage.{goToProductDetailPage, hoversOverProductName, verifyHoverChangesOnProductName}
 import pages.LoginPage.{clickOn, hoversOver, verifyHoverChanges, verifyText, verifyUrl}
 
 class AccessibilityStepDefs extends ScalaDsl with EN {
+
+  Given("""^the user is logged in successfully and is in the product listings page$""") { () =>
+    verifyText(InventoryTitle, expectedTitle)
+    verifyUrl("inventory.html")
+  }
+
 
   When("""the user hovers over the product {string} name""") { (product_name: String) =>
     hoversOverProductName(product_name)
@@ -20,6 +26,12 @@ class AccessibilityStepDefs extends ScalaDsl with EN {
   When("""the user clicks the product {string} name""") { (product_name: String) =>
     goToProductDetailPage(product_name)
   }
+
+  Then("""^the user is redirected to the selected product detail page$""") { () =>
+    verifyText(BackToProductsButton, expectedBackToProductsButtonText)
+    verifyUrl("inventory-item.html")
+  }
+
 
   When("""^the user hovers over the "Back to products" link$""") { () =>
     hoversOver(BackToProductsButton)
