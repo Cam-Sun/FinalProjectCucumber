@@ -30,6 +30,12 @@ object InventoryLocators {
   val AboutLink: By = By.id("about_sidebar_link")
   val InventoryLink: By = By.id("inventory_sidebar_link")
 
+  val TwitterLink: By = By.cssSelector("a[data-test='social-twitter']")
+  val FacebookLink: By = By.cssSelector("a[data-test='social-facebook']")
+  val LinkedInLink: By = By.cssSelector("a[data-test='social-linkedin']")
+
+
+
 
 
 

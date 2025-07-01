@@ -1,3 +1,4 @@
+@login
 Feature: Swag Labs Login Page
 
   Background:

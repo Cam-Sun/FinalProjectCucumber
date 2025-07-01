@@ -1,3 +1,4 @@
+@checkout
 Feature: Your info page
 
   Background:

@@ -1,3 +1,4 @@
+@cart
 Feature: Your Cart Page
 
   Background:

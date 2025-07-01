@@ -1,3 +1,4 @@
+@social
 Feature: Sort listing page
 
   Background:

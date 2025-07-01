@@ -1,3 +1,4 @@
+@checkout
 Feature: checkout complete
 
   Background:
