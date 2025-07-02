@@ -7,7 +7,10 @@ Feature: checkout complete
     And the user clicks the login button
 
   Scenario Outline: User can click Finish button to complete purchase on Checkout: Overview
-    Given the user has added the "<product1>", "<product2>", "<product3>" to the cart, entered "<firstName>", "<lastName>", "<postalCode>" and is on the Checkout: Overview page
+    Given the user has added the "<product1>", "<product2>", "<product3>" to the cart, entered "<firstName>", "<lastName>", "<postalCode>"
+    When the user navigates to checkout overview page
+    Then the order items match the products added to cart "<product1>", "<product2>", "<product3>"
+    And the subtotal amount matches the sum of product prices
     When the user clicks the "Finish" button
     Then the user is redirected to the "Checkout: Complete!" page
 

@@ -12,4 +12,7 @@ object CheckoutLocators {
   val ItemTotal:By= By.className("summary_total_label")
   val checkoutCompleted = "checkout-complete.html"
   val checkoutOverview = "checkout-step-two.html"
+  val Subtotal:By = By.className("summary_subtotal_label")
+  val ItemPrice:By = By.className("inventory_item_price")
+  val ItemName:By = By.className("inventory_item_name")
 }
