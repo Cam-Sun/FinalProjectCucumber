@@ -8,7 +8,7 @@ import pages.LoginPage.{clickOn, verifyUrl}
 
 class InitiateCheckoutStepdefs extends ScalaDsl with EN {
 
-  Given("""Given the user has not added any products to the shopping cart""") { (product_name1: String, product_name2: String) =>
+  Given("""Given the user has not added any products to the shopping cart""") { () =>
     verifyCartItemCount(0, ShoppingCartBadge)
   }
 
@@ -22,16 +22,15 @@ class InitiateCheckoutStepdefs extends ScalaDsl with EN {
     clickOn(Checkout)
   }
 
-  Then("""the user should remain on the "Your Cart" page""") {
+  Then("""the user should remain on the "Your Cart" page""") { () =>
     verifyUrl("cart.html")
   }
 
-  Then("""the user should be directed to "Checkout: Your Information" page""") {
+  Then("""the user should be directed to "Checkout: Your Information" page""") { () =>
     verifyUrl("checkout-step-one.html")
   }
 
-  Given("""the user has added the products {string}, {string}, {string}, {string}, {string}, {string} to the shopping cart"""){
-    (product1:String, product2:String, product3:String, product4:String, product5:String, product6:String)=>{
+  Given("""the user has added the products {string}, {string}, {string}, {string}, {string}, {string} to the shopping cart"""){ (product1:String, product2:String, product3:String, product4:String, product5:String, product6:String) =>
       addToCartSpecificProduct(product1)
       addToCartSpecificProduct(product2)
       addToCartSpecificProduct(product3)
@@ -39,7 +38,6 @@ class InitiateCheckoutStepdefs extends ScalaDsl with EN {
       addToCartSpecificProduct(product5)
       addToCartSpecificProduct(product6)
     }
-  }
 
 
 }
