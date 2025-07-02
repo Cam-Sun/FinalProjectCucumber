@@ -9,23 +9,17 @@ import pages.InventoryPage.{clickOn, clickSortingOption, verifySortingOrder}
 class SortListingStepDefs extends ScalaDsl with EN {
 
   When("""^the user clicks the dropdown menu$""") { () =>
-    //pass the locator of DropDown and click it
     clickOn(DropDown)
   }
 
-  And("""the user selects sorting option {string}""") { (sortingOption:String) =>
-// pass the option
-  clickSortingOption(sortingOption)
+  And("""the user selects sorting option {string}""") { (sortingOption: String) =>
+    clickSortingOption(sortingOption)
 
   }
 
-  Then("""the products are sorted by the sorting option{string}"""){(sortingOption:String)=>{
-//verify the order of the sorted products
-
-    verifySortingOrder(sortingOption,Product)
+  Then("""the products are sorted by the sorting option{string}""") { (sortingOption: String) =>
+    verifySortingOrder(sortingOption, Product)
     println("tested")
-  }}
-
-
+  }
 
 }

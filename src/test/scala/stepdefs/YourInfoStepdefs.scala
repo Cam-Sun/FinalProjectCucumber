@@ -23,15 +23,15 @@ class YourInfoStepdefs extends ScalaDsl with EN {
     inputText(PostalCode, postalCode)
   }
 
-  And("""the user clicks the "Continue" button""") {
+  And("""the user clicks the "Continue" button""") { () =>
     clickOn(Continue)
   }
 
-  Then("""the user should be directed to "Checkout: Overview" page""") {
+  Then("""the user should be directed to "Checkout: Overview" page""") { () =>
     verifyUrl("checkout-step-two.html")
   }
 
-  Then("""error message is displayed"""){
+  Then("""error message is displayed"""){ () =>
     verifyText(InfoPageError, "Error")
   }
 
